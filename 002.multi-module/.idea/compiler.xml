@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="002.multi-module" target="1.8" />
+      <module name="MyCtr" target="1.8" />
+      <module name="myctr" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="002.multi-module" options="-parameters" />
+      <module name="MyCtr" options="-parameters" />
+      <module name="myctr" options="-parameters" />
+      <module name="mysvc" options="-parameters" />
+    </option>
+  </component>
+</project>
