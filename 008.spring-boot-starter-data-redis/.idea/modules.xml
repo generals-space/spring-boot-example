@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/myctr/myctr.iml" filepath="$PROJECT_DIR$/myctr/myctr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mydao/mydao.iml" filepath="$PROJECT_DIR$/mydao/mydao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mysvc/mysvc.iml" filepath="$PROJECT_DIR$/mysvc/mysvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myutil/myutil.iml" filepath="$PROJECT_DIR$/myutil/myutil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-example.iml" filepath="$PROJECT_DIR$/spring-boot-example.iml" />
+    </modules>
+  </component>
+</project>
