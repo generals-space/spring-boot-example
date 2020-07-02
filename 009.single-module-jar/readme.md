@@ -3,7 +3,8 @@
 参考文章
 
 1. [SpringBoot多模块项目实践（Multi-Module）](https://segmentfault.com/a/1190000011367492)
-    - 有打包操作的过程示例, `spring-boot-maven-plugin`插件.
+    - 有打包操作的过程示例, 非常详细.
+    - 在启动类`pom.xml`中添加`spring-boot-maven-plugin`插件.
 2. [maven 打包包含package的几类方法](https://www.jianshu.com/p/94eea6532d07)
     - 给出了多种打包方法, 重点关注其中的`spring-boot-maven-plugin`和`maven-dependency-plugin`两种.
 3. [IDEA 打jar包（IDEA自带的打包方式）](https://www.jianshu.com/p/97250dc28508)
