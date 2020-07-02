@@ -9,6 +9,10 @@
 3. [IDEA 打jar包（IDEA自带的打包方式）](https://www.jianshu.com/p/97250dc28508)
     - Idea 打包, 第二种方式成功, `META-INF/MANIFEST.MF`在启动类的`src`目录下, 与`java`目录同级.
 4. [idea打包jar的多种方式](https://www.jianshu.com/p/3e4c25b973ea)
+5. [【SpringBoot】项目打成 jar 包后关于配置文件的外部化配置](https://segmentfault.com/a/1190000015413754)
+    - 工程打为`jar`包后如何设置参数, 给出了两种方法.
+        1. `java -jar xxx.jar --server.port=10000`
+        2. 在`xxx.jar`所在目录下建立`config`目录, 并在`config`目录下创建`application.properties`文件
 
 本示例基于001, 进行单一模块的工程打包实验, 尝试了多种打包方式.
 
@@ -26,7 +30,7 @@
 
 本例是单模块, 没有其他可以选项, `Main Class`可以通过点击输入框右侧的按钮进行选择, 然后`JAR files from libraries`选择第2个. 这两个选项, 前者是将依赖打入单一Jar包, 后者则是, 但是使用前者我没成功, 执行生成的Jar包时报`java.lang.IllegalArgumentException: No auto configuration classes found in META-INF/spring.factories. If you are using a custom packaging, make sure that file is correct`的错误, 不会解决.
 
-最后是`META-INF/MANIFEST.MF`的路径, 网上说什么的都有, 基本的共识就是, Idea 给出的默认路径(主类的`src/main/java`目录)绝对不行... 
+最后是`META-INF/MANIFEST.MF`的路径, 网上说什么的都有, 基本的共识就是, **Idea 给出的默认路径(主类的`src/main/java`目录)绝对不行...** 
 
 按照参考文章3, 将这个路径设置为主类的`src`目录.
 
@@ -50,7 +54,7 @@
 
 ------
 
-有一点不好就是, 我们自己的jar包和依赖包在同一个目录, 没见过这种结构, 所以需要按照参考文章3再多做几步, 把我们的jar包和依赖包放到独立的目录中.
+有一点不好就是, 我们自己的jar包和依赖包在同一个目录(我就没见过这种奇葩结构), 所以需要按照参考文章3再多做几步, 把我们的jar包和依赖包分别放到独立的目录中.
 
 在下图中创建一个名为`libs`的目录.
 
@@ -108,6 +112,11 @@ $ java -jar ./spring-boot-example-0.0.1-SNAPSHOT.jar
                 <!--该插件主要用途：构建可执行的JAR -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- 貌似不加一段也可以找到主类...
+                    <configuration>
+                        <mainClass>space.generals.java.Main</mainClass>
+                    </configuration>
+                -->
             </plugin>
         </plugins>
     </build>
@@ -188,8 +197,14 @@ Idea内置的`maven`...其实还是`maven`...在项目根目录下(`pom.xml`所�
 java.lang.IllegalArgumentException: No auto configuration classes found in META-INF/spring.factories. If you are using a custom packaging, make sure that file is correct.
 ```
 
-## 5. 总结
+## 5. `application.properties`配置文件
+
+在使用`spring-boot-maven-plugin`打包时, 是把`application.properties`文件也打到jar里了的(示例中没给出, 可以在`src/main`下自行建立`resources`目录试一下), 执行时自动使用其中的配置.
+
+当我们想要在执行时修改一些参数怎么办? 可以见参考文章5, 简洁明了.
+
+## 6. 总结
 
 以后都使用`spring-boot-maven-plugin`插件好了, 方便.
 
-不过还有几种场景需要实验, 比如多模块的打包实验, 以及resources下的资源文件, 配置文件等的存放结构.
+接下来是多模块打包实验.
